@@ -34,7 +34,6 @@ on:
 env:
   AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: app-env           # set this to your Amazon ECR repository name
-#   ECR_REGISTRY: 174462142093.dkr.ecr.us-east-1.amazonaws.com
   ECS_SERVICE: web-service                  # set this to your Amazon ECS service name
   ECS_CLUSTER: test-dev-cluster                 # set this to your Amazon ECS cluster name
 #   ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
@@ -68,7 +67,6 @@ jobs:
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
-#       docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
